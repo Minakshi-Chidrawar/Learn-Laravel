@@ -13,3 +13,15 @@
 Route::view('/', 'welcome');
 Route::view('contact', 'contact');
 Route::view('about', 'about');
+
+Route::get('customer', function() {
+    $customers = [
+        'John Doe',
+        'Jane Doe',
+        'Bob The Builder',
+    ];
+
+    return view('internals.customers', [
+            'customers' => $customers,
+        ]);
+});
