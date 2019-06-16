@@ -8,8 +8,11 @@
             <input type="text" name="name">
         </div>
 
+        <div>
+            {{ $errors->first('name') }}
+        </div>
         <button type="submit">Add Customer</button>
-        {{ csrf_field() }}
+        @csrf
     </form>
     <ul>
         @foreach($customers as $customer)
