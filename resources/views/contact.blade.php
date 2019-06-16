@@ -1,4 +1,5 @@
 @extends('layout')
+@section ('title', 'Conatact Us')
 
 @section('content')
     <h1>Contact Us</h1>
