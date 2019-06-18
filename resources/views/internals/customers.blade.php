@@ -33,6 +33,15 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="company_id">Company</label>
+                    <select name="company_id" id="company_id" class="form-control">
+                        @foreach ($companies as $company)
+                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Add Customer</button>
                 @csrf
             </form>
@@ -42,20 +51,35 @@
 
     <div class="row">
         <div class="col-6">
-        <h3>Active Customers</h3>
-        <ul>
-            @foreach($activeCustomers as $activeCustomer)
-                <li>{{ $activeCustomer->name }} <span class="text-muted">({{ $activeCustomer->email }})</span></li>
-            @endforeach
-        </ul>
+            <h3>Active Customers</h3>
+            <ul>
+                @foreach($activeCustomers as $activeCustomer)
+                    <li>{{ $activeCustomer->name }} <span class="text-muted">({{ $activeCustomer->company->name }})</span></li>
+                @endforeach
+            </ul>
         </div>
+        
         <div class="col-6">
-        <h3>Inactive Customers</h3>
-        <ul>
-            @foreach($inactiveCustomers as $inactiveCustomer)
-                <li>{{ $inactiveCustomer->name }} <span class="text-muted">({{ $inactiveCustomer->email }})</span></li>
+            <h3>Inactive Customers</h3>
+            <ul>
+                @foreach($inactiveCustomers as $inactiveCustomer)
+                    <li>{{ $inactiveCustomer->name }} <span class="text-muted">({{ $inactiveCustomer->company->name }})</span></li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            @foreach ($companies as $company)
+                <h3>{{ $company->name }}</h3>
+
+                <ul>
+                    @foreach ($company->customers as $customer)
+                        <li>{{ $customer->name }}</li>
+                    @endforeach
+                </ul>
             @endforeach
-        </ul>
         </div>
     </div>
 @endsection
