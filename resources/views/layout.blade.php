@@ -13,6 +13,13 @@
     <body>
         <div class="container">
             @include('nav')
+
+            @if(session()->has('message'))
+                <div class="alert alert-success" role="alert">
+                    <strong>Success:</strong> {{ session()->get('message') }}
+                </div>
+            @endif
+
             @yield('content')
         </div>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
