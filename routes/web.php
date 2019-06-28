@@ -12,8 +12,8 @@
 */
 Route::view('/', 'home');
 
-Route::get('contact', 'ContactFormController@create');
-Route::post('contact', 'ContactFormController@store');
+Route::get('contact', 'ContactFormController@create')->name('contact.create');
+Route::post('contact', 'ContactFormController@store')->name('contact.store');
 Route::view('about', 'about');
 
 // Route::get('customers', 'CustomersController@index');
@@ -25,6 +25,7 @@ Route::view('about', 'about');
 // Route::delete('customers/{customer}', 'CustomersController@destroy');
 
 Route::resource('customers', 'CustomersController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
