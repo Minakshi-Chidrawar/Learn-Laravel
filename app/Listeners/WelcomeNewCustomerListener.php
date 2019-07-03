@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class WelcomeNewCustomerListener
+class WelcomeNewCustomerListener implements ShouldQueue
 {
     /**
      * Handle the event.
@@ -17,6 +17,8 @@ class WelcomeNewCustomerListener
      */
     public function handle($event)
     {
+
+
         Mail::to($event->customer->email)->send(new WelcomeNewUserMail());
     }
 }
